@@ -27,40 +27,23 @@ local defaults = {
   },
 
   use_background = auto, -- can be light/dark/auto. When auto, background will be set to vim.o.background
-  sidebars = { "qf", "vista_kind", "terminal", "packer", "spectre_panel", "NeogitStatus", "help" }, -- set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
-
+  sidebars = { "qf", "vista_kind", "terminal", "spectre_panel", "NeogitStatus", "help" }, -- set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
   day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
   hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
   dim_inactive = true, -- dims inactive windows
   lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
 
+
   --- You can override specific color groups to use other groups or a hex color
   --- function will be called with a ColorScheme table
-  on_colors = function(tokioGroupColor)
-    tokioGroupColor.hint = tokioGroupColor.orange
-    -- tokioGroupColor.error = "#ff0000"
-    tokioGroupColor.border = tokioBorder
-  end,
+  ---@param colors ColorScheme
+  on_colors = function(colors) end,
 
   --- You can override specific highlights to use other groups or a hex color
-  --- fucntion will be called with a Highlights and ColorScheme table
-  -- on_highlights = function(highlights, colors) end,
-  on_highlights = function(hl, xotoColor)
-    local prompt = "#FFA630"
-    local text = "#488dff"
-    local none = "NONE"
-
-    hl.IndentBlanklineContextChar = { fg = xotoColor.dark5}
-    hl.TSConstructor = {fg = xotoColor.blue1}
-    hl.TSTagDelimiter = {fg = xotoColor.dark5}
-
-    hl.TelescopeTitle = { fg = prompt, }
-    hl.TelescopeNormal = { bg = none, fg = none, }
-    hl.TelescopeBorder = { bg = none, fg = text }
-    hl.TelescopeMatching = { fg = prompt }
-    hl.MsgArea = { fg = tokioColor.fg_dark }
-  end,
-
+  --- function will be called with a Highlights and ColorScheme table
+  ---@param highlights Highlights
+  ---@param colors ColorScheme
+  on_highlights = function(highlights, colors) end,
 }
 
 ---@type Config
